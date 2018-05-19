@@ -1,0 +1,201 @@
+Уствновка рулетки на MySQL и Laravel (CSGOUP и прочие)
+1. Установить на хостинг ОС Ubuntu 14.04
+2. Зайти на свой хостинг через PuTTY и вводить эти команды:
+
+//Установка нужных компонентов
+apt-get update
+apt-get install sudo
+apt-get install bsdutils
+apt-get install curl
+apt-get install -y build-essential
+apt-get install -y python-software-properties
+apt-get install -y php5
+apt-get install -y apache2
+apt-get install -y libapache2-mod-php5
+
+apt-get install -y mysql-server
+
+После этой команды вам придется придумать пароль для вашей базы данных
+НЕ ЗАБУДЬТЕ ЕГО!!!!! ОН ВАМ ЕЩЕ ПОНАДОБИТСЯ!
+
+
+
+apt-get install -y php5-mysql
+apt-get install -y php5-curl
+apt-get install -y php5-gd
+apt-get install -y php5-mcrypt
+apt-get install -y git-core
+
+apt-get install -y phpmyadmin
+
+После этой команды надо будет опять ввести пароль от базы 3 раза
+
+
+apt-get install unzip
+
+//Установка Node.JS для бота
+curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+apt-get install --yes nodejs
+apt-get install --yes build-essential
+npm install -g pm2
+pm2 startup
+
+//Модификация веб-сервера
+sudo a2enmod rewrite
+service apache2 restart
+
+//Установка Composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+sudo apt-get update
+sudo apt-get install tcl8.5
+
+//Установка Redis сервера
+wget http://download.redis.io/releases/redis-stable.tar.gz
+tar xzf redis-stable.tar.gz
+cd redis-stable
+make
+make install
+cd utils
+sudo ./install_server.sh
+
+Тут нужно будет много раз нажать Enter
+
+
+
+3. Модификация конфигов
+
+Идём в /etc/apache2/sites-avialable
+
+Открываем файл 000-default.conf
+
+Меняем DocumentRoot /var/www/html на DocumentRoot /var/www/html/public
+
+Идем в /etc/apache2
+
+Открываем файл apache2.conf
+
+Ищем строки с текстом AllowOverride None (4 штуки)
+
+Везде меняем None на All
+
+В конце файла делаем 2-3 ентера и добавляем туда эти строки с решетками
+
+#
+Include /etc/phpmyadmin/apache.conf
+#
+
+
+Идем в /etc/redis/6379.conf
+
+Ищем:
+#bind 127.0.0.1
+Заменяем на:
+bind 127.0.0.1
+
+Перезагружаем редис и апач командами:
+service redis_6379 restart
+service apache2 restart
+
+
+4. Настройка скрипта.
+
+Сначала нужно перейти по адресу *ваш_айпи*/phpmyadmin
+Там нужно зайти с паролем который вы указали ранее
+
+Затем нужно создать базу данных. Выберите любое название.
+
+Зайдите в эту базу и нажмите кнопку Импорт. Там выберите файл базы и загрузите его
+
+Далее переходим к настройке самого скрипта.
+
+Заходим в папку со скриптом и открываем файл .env
+Там вводим данные от базы. Айпи базы оставляем localhost
+
+Затем переходим в папку config
+В ней открываем файл database.php
+Там указываем те же данные от базы что и в прошлом файле
+
+В той же папке config открываем файл steam-auth.php
+Вводим свой API-Key
+
+Затем возвращаемся обратно в главную папку со скриптом
+В ней открываем папку resources
+В ней открываем папку views
+Открываем файл layout.blade.php и настраиваем под себя верхнюю панель по желанию
+Так же меняем название сайта на свое
+
+В папке views открываем папку pages
+Во всех файлах где есть название сайта меняем на свое.
+
+Возвращаемся в основную папку
+Идем в папку public
+В ней идем в папку assets
+В ней в папку js
+Открываем app.js
+Ищем название сайта и меняем на свое.
+Ищем число 2020 и перед двоеточием вставляем айпи сервера.
+
+Идем назад в основную папку
+Идем в папку app
+В ней в папку Http
+В ней в папку Controllers
+Открываем файл GameController.php
+Настраиваем под себя параметры игры
+Так же вводим свой Backey для получения цен на вещи
+Можно ввести ключи от GDonate для доната на сайт
+Открываем файл PagesController.php
+В нем меняем название сайта на свое.
+Открываем файл SupportController.php (ЕСЛИ ЕСТЬ! МОЖЕТ НЕ БЫТЬ! НЕ СТРАШНО!)
+Меняем название сайта на свое
+
+Запаковываем весь скрипт в архив формата .zip (ИМЕННО ZIP!!!)
+Назывем 1.zip
+Загружаем в /var/www/html
+
+В PuTTY вводим команды:
+
+cd /var/www/html
+unzip 1.zip
+cd /var/www
+chmod -R 777 html
+
+Настройка скрипта закончена
+
+5. Настройка бота
+
+Открываем файл config.js и вводим данные.
+
+username: Логин бота
+password: Пароль бота
+steamid: Стим айди бота
+secret: shared_secret из мобильного аутентификатора
+identity_secret: identity_secret из мобильного аутентификатора
+apiKey: Апи кей бота
+domain: Домен сайта (Или айпи) без http://
+secretKey: НЕ ТРОГАТЬ
+admins: Админы бота
+
+Запаковываем в архив формата .zip (ИМЕННО ZIP!!!)
+Называем 2.zip
+Создаем на сервере папку bot в корне файловой системы
+Туда загружаем бота
+
+В PuTTY вводим команды:
+
+cd /bot
+unzip 2.zip
+
+
+ЗАПУСК БОТА:
+cd /bot
+pm2 start app.js
+
+ПОСМОТРЕТЬ ЛОГИ БОТА
+pm2 logs 0
+
+ПЕРЕЗАПУСТИТЬ БОТА
+pm2 restart 0
+
+ОСТАНОВИТЬ БОТА
+pm2 stop 0

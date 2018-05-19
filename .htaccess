@@ -1,0 +1,20 @@
+RewriteBase /
+#Если адрес сайта 127.0.0.18 (аналог sete.ru)
+RewriteCond %{SERVER_ADDR} cool-csgo.ru
+#то редирект на главный 127.0.0.1 (site.ru)
+RewriteRule http://cool-csgo.ru/admin/(.*)$ http://cool-csgo.ru/%{REQUEST_FILENAME}$1 [R=301,L]
+
+#далее условия для главного сайта
+RewriteCond http://cool-csgo.ru/admin/(.*)$ http://cool-csgo.ru/%{REQUEST_FILENAME}$
+RewriteCond http://cool-csgo.ru/admin/(.*)$ http://cool-csgo.ru/%{REQUEST_FILENAME}$
+#и избавляемся от имени index.php
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteEngine on
+
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^profile\/(.*)$ profile.php?id=$1
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
