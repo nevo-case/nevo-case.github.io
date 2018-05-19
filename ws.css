@@ -1,0 +1,41 @@
+
+header .center {
+    display: none;
+    float: none;
+    left: 50%;
+    margin-left: -67px;
+    position: absolute;
+    top: 0;
+}
+header .left {
+    display: none;
+    float: none;
+    margin-right: 67px;
+    position: absolute;
+    right: 50%;
+    top: 0;
+}
+header .right {
+    display: none;
+    float: none;
+    left: 50%;
+    margin-left: 67px;
+    position: absolute;
+    top: 0;
+}
+.content {
+    background: rgba(0, 0, 0, 0) url("header.jpg") repeat-x scroll 0 0;
+    margin: 0 auto;
+    min-width: 970px;
+    width: 100%;
+}
+.contacts .vk {
+    left: 0 !important;
+    margin: 0 !important;
+}
+.contacts .email:nth-child(4) {
+    margin: 0 0 0 181px !important;
+}
+footer .stat span {
+  text-shadow: 0 0  1px  #000,0 0  2px  #000;
+}

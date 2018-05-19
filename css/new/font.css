@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'GOST-type-A-Standard';
+    src: url('/GOST-type-A-Standard.eot');
+    src: url('/GOST-type-A-Standard.eot?#iefix') format('embedded-opentype'),
+         url('/GOST-type-A-Standard.woff') format('woff'),
+         url('/GOST-type-A-Standard.ttf') format('truetype'),
+         url('/GOST-type-A-Standard.svg#GOST-type-A-Standard') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
