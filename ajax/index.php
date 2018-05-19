@@ -168,7 +168,7 @@ $shown ="0";
 
 
 if($users_shop_arr["network"] == "steam"){
-					 $request = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=BA090DD03948C5439875D37FA7406867&steamids=' . $users_shop_arr['uid'];
+					 $request = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=D512F330649CD329679B640E49E144C5&steamids=' . $users_shop_arr['uid'];
 				 $response = file_get_contents($request);
 				 $info = json_decode($response,true);
 				 $img = $info["response"]["players"]["0"]["avatar"];

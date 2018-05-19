@@ -20,7 +20,7 @@ function loadsHtmlLast() {
         $user = $result->fetch_assoc();
         
         if(empty($user['nickname'])) {
-            $request = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?keyBA090DD03948C5439875D37FA7406867&steamids=' . $user['uid'];
+            $request = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?keyD512F330649CD329679B640E49E144C5&steamids=' . $user['uid'];
             $response = file_get_contents($request);
             $info = json_decode($response,"true");
             $a['nickName'] = $info["response"]["players"]["0"]["personaname"];
