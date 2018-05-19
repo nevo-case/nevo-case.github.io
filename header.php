@@ -151,7 +151,7 @@ $echo =<<<HTML
 								  <ul>
 							<div >
 								
-								  <div id="uLogin" data-ulogin="display=buttons;fields=first_name,last_name,photo;redirect_uri=http%3A%2F%2Fnevo-case.fl">
+								  <div id="uLogin" data-ulogin="display=buttons;fields=first_name,last_name,photo;redirect_uri=http%3A%2F%2Fnevo-case.cf">
     <img src="steam.png" data-uloginbutton = "steam" style="height: 168px;"><br/>
 </div>
 
@@ -442,7 +442,7 @@ $echo =<<<HTML
 								  <ul>
 							<div >
 								
-								  <div id="uLogin" data-ulogin="display=buttons;fields=first_name,last_name,photo;redirect_uri=http%3A%2F%2Fnevo-case.fl">
+								  <div id="uLogin" data-ulogin="display=buttons;fields=first_name,last_name,photo;redirect_uri=http%3A%2F%2Fnevo-case.cf">
     <img src="steam.png" data-uloginbutton = "steam" style="height: 168px;"><br/>
 </div>
 
