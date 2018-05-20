@@ -1,9 +1,9 @@
 ﻿<?
 
 $server         	= "localhost";       //host         
-$db_user        	= "nevo-case";       //user                             
-$user_pass        	= "nevo-case";       //password
-$database       	= "nevo-case"; 		//dbname
+$db_user        	= "t918214t_nevo";       //user                             
+$user_pass        	= "t918214t_nevo";       //password
+$database       	= "t918214t_nevocase"; 		//dbname
 
 
 $ADMIN_ID =1; //id админа

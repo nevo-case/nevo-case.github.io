@@ -2,7 +2,7 @@
 //$db = mysql_connect ("localhost", "u202372135_qwer ", "paparazi1533714");
 //mysql_select_db ("u202372135_qwer", $db);
 //mysql_query("set names utf8"); //Передаем базе данных в какой кодировке будем передавать данные
-$mysqli = new mysqli("localhost", "nevo-case", "nevo-case", "nevo-case");
+$mysqli = new mysqli("localhost", "t918214t_nevo", "t918214t_nevo", "t918214t_nevocase");
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }

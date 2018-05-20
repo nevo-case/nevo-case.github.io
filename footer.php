@@ -13,9 +13,9 @@ $users_count = mysql_fetch_assoc(mysql_query("SELECT COUNT(*) FROM `users_shop`"
 			<div class="w34">
 <span style="color: #04B208;"><?php
 $db_host  = 'localhost'; //Хост базы данных
-$db_name  = 'nevo-case'; //Имя базы данных
-$db_username  = 'nevo-case'; //Имя пользователя базы данных
-$db_password  = 'nevo-case'; //Пароль базы данных
+$db_name  = 't918214t_nevo'; //Имя базы данных
+$db_username  = 't918214t_nevo'; //Имя пользователя базы данных
+$db_password  = 't918214t_nevocase'; //Пароль базы данных
 $db_table_to_show = 'users_shop'; //Таблица
  
 $connect_to_db = mysql_connect($db_host, $db_username, $db_password) //Подключаемся к базе данных
